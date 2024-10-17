@@ -5,6 +5,10 @@ The goal of this algorithm is to eliminate PCR duplicates from a SAM file of map
 
 ## Input/Output Examples
 
+[Input test file](https://github.com/lenarayneallen/Deduper-lenarayneallen/blob/2e909f8e5527bc93dc2edc5325ecfbdcc0a044fe/input_testfile.sam)
+
+[Output test file](https://github.com/lenarayneallen/Deduper-lenarayneallen/blob/2e909f8e5527bc93dc2edc5325ecfbdcc0a044fe/output_testfile.sam)
+
 ## High Level Functions
 ```python
 
