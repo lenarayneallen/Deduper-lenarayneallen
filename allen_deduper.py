@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import re
 import argparse
-import gzip
 
 def get_args():
     parser = argparse.ArgumentParser(add_help=True,
@@ -128,7 +127,7 @@ for i in UMI_list:
 
 
 #open SAM file as sam and output file to be written to
-with gzip.open(f, "rt") as sam, open(o, "w") as of:
+with open(f, "rt") as sam, open(o, "w") as of:
     #initialize a dictionary where keys will equal (umi, position, strand) and values will equal a list of lines with the same umi, strand, and position.
     #This dictionary will be cleared and overwritten when current_chr changes
     chr_dict = {}
