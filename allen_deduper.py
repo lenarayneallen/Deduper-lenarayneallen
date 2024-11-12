@@ -95,9 +95,9 @@ def pos_adj(SAM_info: dict) -> dict:
 
 
 def filter_pcr_dupes(chrumi_dict: dict) -> tuple:
-    '''Given a list of format [[line, (POS, STRAND)]] comprised of SAM file entries with the same UMI and same CHR, 
-    return a list of lines with PCR duplicates filtered out, selecting the first entry of any duplicates. Also counts
-    the number of UMIs enountered that are not in the provided list of UMIs'''
+    '''Given a dictionary where keys = (umi, position, strand) and values = SAM file lines with the same UMI, chromosome, 
+    and position (after adjustment), creates a list of lines with PCR duplicates filtered out, selecting the first entry of any duplicates. Also counts
+    the number of UMIs enountered that are not in the provided list of UMIs. Returns a tuple of structure (deduplicated_list, # of incorrect UMIs)'''
     deduped = []
     wrongumis = 0
     for key in chrumi_dict:
@@ -129,7 +129,7 @@ for i in UMI_list:
 
 #open SAM file as sam and output file to be written to
 with gzip.open(f, "rt") as sam, open(o, "w") as of:
-    #initialize a dictionary where keys will equal (umi, position, strand) and values will equal a list of lines with the information from the keys.
+    #initialize a dictionary where keys will equal (umi, position, strand) and values will equal a list of lines with the same umi, strand, and position.
     #This dictionary will be cleared and overwritten when current_chr changes
     chr_dict = {}
     firstchr = True
